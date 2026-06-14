@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matthew D. Mitchell, Ph.D. — Economist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1923;
+    --ink-soft: #2d3f52;
+    --ink-muted: #6b7e91;
+    --gold: #c9973a;
+    --gold-light: #e8c47a;
+    --gold-pale: #fdf6e8;
+    --sky: #e8f2fa;
+    --white: #ffffff;
+    --rule: #dde5ed;
+    --card-bg: #f7fafd;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+    --radius: 4px;
+    --shadow: 0 2px 12px rgba(15,25,35,0.08);
+    --shadow-hover: 0 6px 24px rgba(15,25,35,0.14);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 2rem;
+  }
+  .nav-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+  .nav-name {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    color: var(--white);
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201,151,58,0.12) 0%, transparent 65%),
+                radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,151,58,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  /* Decorative grid lines */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,151,58,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,151,58,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--gold-light);
+  }
+  .hero-bio {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.72);
+    max-width: 540px;
+    margin-bottom: 2rem;
+  }
+  .hero-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--gold);
+    color: var(--ink);
+    padding: 0.6rem 1.3rem;
+    border-radius: var(--radius);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.85);
+    padding: 0.6rem 1.3rem;
+    border-radius: var(--radius);
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--gold); background: rgba(201,151,58,0.1); color: var(--gold-light); }
+
+  /* Stats panel */
+  .hero-stats {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.3;
+  }
+  .stat-divider {
+    grid-column: 1/-1;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+  }
+
+  /* ── POSITIONS STRIP ── */
+  .positions-strip {
+    background: var(--gold-pale);
+    border-bottom: 1px solid #e8d9b8;
+    padding: 0.9rem 2rem;
+  }
+  .positions-strip-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 2.5rem;
+    align-items: center;
+  }
+  .position-tag {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    padding: 0.2rem 0;
+  }
+  .position-tag strong { color: var(--ink); }
+  .pos-sep { color: var(--gold); font-size: 0.9rem; }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 2rem; }
+  section:nth-child(even) { background: var(--card-bg); }
+  .section-inner { max-width: 1120px; margin: 0 auto; }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--rule);
+  }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  h2 {
+    font-family: var(--serif);
+    font-size: 1.9rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  /* ── RESEARCH AREAS ── */
+  .research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+  .research-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 1.5rem;
+    position: relative;
+    transition: box-shadow 0.2s, transform 0.15s;
+  }
+  .research-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+  .research-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 6px 6px 0 0;
+  }
+  .research-icon {
+    font-size: 1.6rem;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+  .research-card h3 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+  .research-card p {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  .research-card { cursor: pointer; }
+  .research-card:focus { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .card-expand-hint { font-size: 0.7rem; color: var(--gold); margin-left: 0.25rem; transition: transform 0.2s; display: inline-block; }
+  .research-card[aria-expanded="true"] .card-expand-hint { transform: rotate(90deg); }
+  .card-pubs {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--rule);
+  }
+  .card-pub-item {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 0 0.5rem;
+    padding: 0.35rem 0;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    border-bottom: 1px solid rgba(221,229,237,0.5);
+  }
+  .card-pub-item:last-child { border-bottom: none; }
+  .card-pub-year { font-family: var(--mono); font-size: 0.66rem; color: var(--gold); padding-top: 0.1rem; }
+  .card-pub-item a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.2s, border-color 0.2s; }
+  .card-pub-item a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .book-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: box-shadow 0.2s;
+  }
+  .book-card:hover { box-shadow: var(--shadow-hover); }
+  .book-year {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .book-card h3 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+  .book-card h3 a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .book-card h3 a:hover { border-bottom-color: var(--gold); }
+  .book-authors {
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+  }
+  .book-pub {
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    margin-top: auto;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--rule);
+    font-style: italic;
+  }
+
+  /* ── PUBLICATIONS LIST ── */
+  .pub-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .filter-btn {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    color: var(--ink-soft);
+    padding: 0.35rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--ink);
+    color: var(--white);
+    border-color: var(--ink);
+  }
+  .pub-list { display: flex; flex-direction: column; gap: 0; }
+  .pub-item {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 0 1.25rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+    transition: background 0.15s;
+  }
+  .pub-item:hover { background: var(--sky); margin: 0 -1rem; padding: 1.25rem 1rem; }
+  .pub-year-col {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--gold);
+    font-weight: 500;
+    padding-top: 0.15rem;
+    letter-spacing: 0.05em;
+  }
+  .pub-content {}
+  .pub-title {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+    margin-bottom: 0.3rem;
+  }
+  .pub-title a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .pub-title a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+  .pub-meta {
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.75rem;
+    align-items: center;
+  }
+  .pub-venue { font-style: italic; }
+  .pub-tag {
+    background: var(--sky);
+    color: var(--ink-soft);
+    padding: 0.1rem 0.5rem;
+    border-radius: 10px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .pub-tag.peer { background: #e6f4ea; color: #2d6a3f; }
+  .pub-tag.book-chap { background: #eef2fb; color: #3a4f8a; }
+  .pub-tag.policy { background: #fdf0e0; color: #8a5a1a; }
+  .pub-tag.testimony { background: #f5e8fb; color: #6a3080; }
+
+  .show-more-btn {
+    display: block;
+    margin: 2rem auto 0;
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--ink-soft);
+    padding: 0.6rem 2rem;
+    border-radius: var(--radius);
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--sans);
+  }
+  .show-more-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── EXPERIENCE ── */
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 0 2rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .exp-years {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+    padding-top: 0.2rem;
+    line-height: 1.4;
+  }
+  .exp-role { font-weight: 600; font-size: 0.95rem; color: var(--ink); margin-bottom: 0.15rem; }
+  .exp-org {
+    font-size: 0.85rem;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .exp-desc {
+    font-size: 0.83rem;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  /* ── SELECTED OP-EDS ── */
+  .oped-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  .oped-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: box-shadow 0.2s, transform 0.15s;
+    text-decoration: none;
+  }
+  .oped-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+  .oped-outlet {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .oped-title {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+  .oped-date {
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    margin-top: auto;
+  }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .contact-bio {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+  .contact-details { display: flex; flex-direction: column; gap: 0.75rem; }
+  .contact-row {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    font-size: 0.88rem;
+  }
+  .contact-row-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    min-width: 80px;
+    padding-top: 0.05rem;
+  }
+  .contact-row a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .contact-row a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+  .affiliation-block {
+    background: var(--ink);
+    color: var(--white);
+    border-radius: 8px;
+    padding: 2rem;
+  }
+  .affiliation-block h3 {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    margin-bottom: 1.25rem;
+  }
+  .affil-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.85rem;
+  }
+  .affil-item:last-child { border-bottom: none; }
+  .affil-role { color: rgba(255,255,255,0.5); font-size: 0.78rem; margin-top: 0.15rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.78rem;
+    font-family: var(--mono);
+    letter-spacing: 0.05em;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  /* ── HIDDEN PUBS ── */
+  .pub-hidden { display: none !important; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+    .exp-item { grid-template-columns: 1fr; gap: 0.25rem; }
+    .exp-years { font-size: 0.68rem; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    section { padding: 3.5rem 1.25rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after { transition-duration: 0.01ms !important; }
+  }
+
+  /* ── ALL PUBLICATIONS (collapsible groups) ── */
+  #all-publications { background: var(--white); }
+  .full-pub-group { border: 1px solid var(--rule); border-radius: 6px; margin-bottom: 0.75rem; overflow: hidden; }
+  .full-pub-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    background: var(--card-bg);
+    border: none;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-align: left;
+    transition: background 0.2s;
+  }
+  .full-pub-toggle:hover { background: var(--sky); }
+  .toggle-icon { font-size: 0.85rem; color: var(--gold); transition: transform 0.2s; }
+  .toggle-icon.open { transform: rotate(90deg); }
+  .full-pub-body { padding: 0.5rem 1.25rem 1rem; }
+  .full-pub-item {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 0 1rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .full-pub-item:last-child { border-bottom: none; }
+  .full-pub-item a { color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s, color 0.2s; }
+  .full-pub-item a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+  .full-pub-year { font-family: var(--mono); font-size: 0.68rem; color: var(--gold); font-weight: 500; letter-spacing: 0.05em; padding-top: 0.2rem; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-name" href="#">Matthew D. Mitchell</a>
+    <ul class="nav-links">
+      <li><a href="#research">Research</a></li>
+      <li><a href="#books">Books</a></li>
+      <li><a href="#publications">Selected Pubs</a></li>
+      <li><a href="#all-publications">All Publications</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">// Senior Fellow · Economist · Ph.D.</div>
+      <h1>Matthew D.<br>Mitchell</h1>
+      <p class="hero-bio">
+        Senior Fellow at the Fraser Institute's Centre for Human Freedom and co-author of the <em>Human Freedom Index</em>, <em>Economic Freedom of the World</em>, and <em>Economic Freedom of North America</em>. My research examines how economic and personal freedom shape human flourishing.
+      </p>
+      <div class="hero-links">
+        <a class="btn-primary" href="https://www.fraserinstitute.org/studies/human-freedom-index-2025" target="_blank">Human Freedom Index →</a>
+        <a class="btn-primary" href="https://www.fraserinstitute.org/sites/default/files/2025-09/economic-freedom-of-the-world-2025-annual-report_1.pdf" target="_blank">Econ. Freedom of the World →</a>
+        <a class="btn-primary" href="https://www.fraserinstitute.org/studies/economic-freedom-north-america-2025" target="_blank">Econ. Freedom of N. America →</a>
+        <a class="btn-ghost" href="mailto:Matthew.Mitchell@FraserInstitute.org">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num" id="cnt-pubs">165+</span>
+        <span class="stat-label">Research Papers & Policy Briefs</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Books</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">50+</span>
+        <span class="stat-label">Legislative Testimonies in 20+ States</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">20+</span>
+        <span class="stat-label">Years Teaching Economics</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item" style="grid-column:1/-1">
+        <span class="stat-num" style="font-size:1.8rem;">GMU · Fraser · Mercatus</span>
+        <span class="stat-label">Institutions</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- POSITIONS STRIP -->
+<div class="positions-strip">
+  <div class="positions-strip-inner">
+    <span class="position-tag"><strong>Senior Fellow</strong> — Fraser Institute</span>
+    <span class="pos-sep">·</span>
+    <span class="position-tag"><strong>Senior Affiliated Scholar</strong> — Mercatus Center</span>
+    <span class="pos-sep">·</span>
+    <span class="position-tag"><strong>Adjunct Professor</strong> — UNM Taos</span>
+    <span class="pos-sep">·</span>
+    <span class="position-tag">Ph.D. Economics, George Mason University</span>
+  </div>
+</div>
+
+<!-- RESEARCH AREAS -->
+<section id="research">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">01 /</span>
+      <h2>Research Areas</h2>
+    </div>
+    <div class="research-grid">
+      <div class="research-card" onclick="toggleResearch('freedom')" role="button" tabindex="0" aria-expanded="false" id="card-freedom">
+        <span class="research-icon">🌐</span>
+        <h3>Economic &amp; Human Freedom <span class="card-expand-hint">▸</span></h3>
+        <p>Constructing and analyzing global indices of economic freedom (<em>EFW</em>) and human freedom (<em>HFI</em>), covering 165 countries annually.</p>
+        <div class="card-pubs" id="pubs-freedom" style="display:none">
+          <div class="card-pub-item"><span class="card-pub-year">2025</span><a href="https://www.fraserinstitute.org/studies/human-freedom-index-2025" target="_blank">The Human Freedom Index 2025</a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2025</span><a href="https://www.fraserinstitute.org/sites/default/files/2025-09/economic-freedom-of-the-world-2025-annual-report_1.pdf" target="_blank">Economic Freedom of the World 2025</a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2025</span><a href="https://www.fraserinstitute.org/studies/liberators-us-states-that-increased-their-economic-freedom-in-21st-century" target="_blank">The Liberators: US States that Increased their Economic Freedom</a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2025</span><a href="https://www.fraserinstitute.org/studies/US-economic-freedom-in-a-trade-war" target="_blank">US Economic Freedom in a Trade War</a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2024</span><a href="https://www.fraserinstitute.org/studies/human-freedom-index-2024" target="_blank">The Human Freedom Index 2024</a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2024</span><a href="https://www.fraserinstitute.org/studies/economic-freedom-north-america-2024" target="_blank">Economic Freedom of North America 2024</a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2024</span><a href="https://www.fraserinstitute.org/studies/economic-freedom-what-is-it-how-is-it-measured-and-how-does-it-affect-our-lives" target="_blank">Economic Freedom: What is it? How is it Measured?</a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2025</span><a href="https://www.fraserinstitute.org/studies/economic-freedom-in-land-of-enchantment" target="_blank">Economic Freedom in the Land of Enchantment</a></div>
+        </div>
+      </div>
+
+      <div class="research-card" onclick="toggleResearch('pubchoice')" role="button" tabindex="0" aria-expanded="false" id="card-pubchoice">
+        <span class="research-icon">🏛</span>
+        <h3>Public Choice &amp; Political Economy <span class="card-expand-hint">▸</span></h3>
+        <p>How special interests, rent-seeking, and government favoritism distort markets and policy—drawing on the Buchanan-Tullock tradition.</p>
+        <div class="card-pubs" id="pubs-pubchoice" style="display:none">
+          <div class="card-pub-item"><span class="card-pub-year">2019</span><a href="https://link-springer-com.mutex.gmu.edu/article/10.1007%2Fs11127-018-0588-3" target="_blank">Uncontestable Favoritism, <em>Public Choice</em></a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2019</span><a href="https://link-springer-com.mutex.gmu.edu/epdf/10.1007/s11127-019-00646-y" target="_blank">Rent Seeking at 52, <em>Public Choice</em></a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2018</span><a href="http://journal.srsa.org/ojs/index.php/RRS/article/view/1184/850" target="_blank">Political Economy of Targeted Economic Development Incentives, <em>Review of Regional Studies</em></a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2012</span><a href="https://www.mercatus.org/publication/pathology-privilege-economic-consequences-government-favoritism" target="_blank">The Pathology of Privilege</a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2019</span><span style="color:var(--ink-muted)">A Culture of Favoritism (with Eastman &amp; Winter)</span></div>
+          <div class="card-pub-item"><span class="card-pub-year">2017</span><a href="https://www.amazon.com/Applied-Mainline-Economics-Bridging-Political-ebook/dp/B06XWKV4XB" target="_blank">Applied Mainline Economics (book, with Boettke)</a></div>
+        </div>
+      </div>
+
+      <div class="research-card" onclick="toggleResearch('con')" role="button" tabindex="0" aria-expanded="false" id="card-con">
+        <span class="research-icon">⚕️</span>
+        <h3>Certificate of Need Laws <span class="card-expand-hint">▸</span></h3>
+        <p>Extensive empirical and legal research on how CON regulations restrict healthcare access, quality, and competition across the states.</p>
+        <div class="card-pubs" id="pubs-con" style="display:none">
+          <div class="card-pub-item"><span class="card-pub-year">2024</span><a href="https://onlinelibrary-wiley-com.wvu.idm.oclc.org/doi/abs/10.1002/soej.12698" target="_blank">CON Laws: A Comprehensive Review, <em>Southern Economic Journal</em></a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2024</span><a href="https://journals-sagepub-com.wvu.idm.oclc.org/doi/10.1177/00469580241251937" target="_blank">CON Laws: Past, Present, and Future, <em>Inquiry</em></a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2022</span><a href="https://www.mdpi.com/1911-8074/15/1/10/htm" target="_blank">Economics of a Bed Shortage (with Stratmann), <em>JRFM</em></a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2025</span><a href="https://pacificlegal.org/wp-content/uploads/2025/08/SR-1161-Mitchell-and-Cavanaugh-Research-in-Brief-Certificate-of-Need-Reform-v2.pdf" target="_blank">CON Reform: Answering the Fears (Pacific Legal Foundation)</a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2023</span><a href="https://ij.org/report/striving-for-better-care/" target="_blank">Striving for Better Care: Kentucky's CON Laws (IJ)</a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2017</span><a href="https://www.mercatus.org/conlaws" target="_blank">CON Laws Across the States (Mercatus)</a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2016</span><a href="https://www.mercatus.org/publication/do-certificate-need-laws-limit-spending" target="_blank">Do CON Laws Limit Spending?</a></div>
+        </div>
+      </div>
+
+      <div class="research-card" onclick="toggleResearch('licensing')" role="button" tabindex="0" aria-expanded="false" id="card-licensing">
+        <span class="research-icon">🔖</span>
+        <h3>Occupational Licensing <span class="card-expand-hint">▸</span></h3>
+        <p>Measuring the burden of occupational licensing across states and its disparate impact on lower-income workers and those with criminal records.</p>
+        <div class="card-pubs" id="pubs-licensing" style="display:none">
+          <div class="card-pub-item"><span class="card-pub-year">2022</span><a href="https://www.mercatus.org/publications/occupational-regulation-and-licensure/economic-freedom-period-invisible-punishment" target="_blank">Economic Freedom in the Period of Invisible Punishment</a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2021</span><a href="https://www.mercatus.org/publications/occupational-regulation-and-licensure/policy-spotlight-burdensome-occupational" target="_blank">Burdensome Occupational Licensing Harms Vulnerable Populations</a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2017</span><a href="https://www.mercatus.org/publications/effects-occupational-licensure-competition-consumers-and-workforce" target="_blank">Effects of Occupational Licensure on Competition &amp; Consumers</a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2017–18</span><span style="color:var(--ink-muted)">State licensing studies: AR, IL, MI, MO, NE, NV, NC, WI</span></div>
+          <div class="card-pub-item"><span class="card-pub-year">2019</span><span style="color:var(--ink-muted)">West Virginia Occupational Licensing (with Blair)</span></div>
+        </div>
+      </div>
+
+      <div class="research-card" onclick="toggleResearch('fiscal')" role="button" tabindex="0" aria-expanded="false" id="card-fiscal">
+        <span class="research-icon">📊</span>
+        <h3>State Fiscal Policy <span class="card-expand-hint">▸</span></h3>
+        <p>Tax and expenditure limitations, budget institutions, corporate welfare, and the political economy of state spending.</p>
+        <div class="card-pubs" id="pubs-fiscal" style="display:none">
+          <div class="card-pub-item"><span class="card-pub-year">2020</span><a href="https://www.mercatus.org/publications/corporate-welfare/-interstate-compact-end-economic-development-subsidy-arms-race" target="_blank">An Interstate Compact to End the Subsidy Arms Race</a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2019</span><a href="https://www.mercatus.org/system/files/mitchell-targeted-development-mercatus-special-study-v1.pdf" target="_blank">The Economics of a Targeted Economic Development Subsidy</a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2015</span><span style="color:var(--ink-muted)">A Tragedy of the Anticommons: Cell Phone Tax Bills, <em>Public Choice</em></span></div>
+          <div class="card-pub-item"><span class="card-pub-year">2015</span><span style="color:var(--ink-muted)">Fiscal Effects of Separate Taxing and Spending Committees (with Yakovlev)</span></div>
+          <div class="card-pub-item"><span class="card-pub-year">2012</span><span style="color:var(--ink-muted)">Institutions and State Spending, <em>Independent Review</em></span></div>
+          <div class="card-pub-item"><span class="card-pub-year">2010</span><span style="color:var(--ink-muted)">TEL It Like It Is: Do Tax &amp; Expenditure Limits Work?</span></div>
+        </div>
+      </div>
+
+      <div class="research-card" onclick="toggleResearch('regulation')" role="button" tabindex="0" aria-expanded="false" id="card-regulation">
+        <span class="research-icon">🏭</span>
+        <h3>Regulation &amp; Innovation <span class="card-expand-hint">▸</span></h3>
+        <p>Sharing economy, transportation networks, regulatory fresh starts, and the barriers that slow economic dynamism.</p>
+        <div class="card-pubs" id="pubs-regulation" style="display:none">
+          <div class="card-pub-item"><span class="card-pub-year">2022</span><a href="https://administrativestate.gmu.edu/wp-content/uploads/sites/29/2022/02/McLaughlin-Mitchell-Thierer-FINAL.pdf" target="_blank">A Fresh Start: Regulations Suspended During COVID</a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2015</span><a href="https://digitalcommons.pepperdine.edu/cgi/viewcontent.cgi?article=1130&context=jbel" target="_blank">The Sharing Economy and Consumer Protection Regulation, <em>JBEL</em></a></div>
+          <div class="card-pub-item"><span class="card-pub-year">2018</span><span style="color:var(--ink-muted)">Taxis, <em>Taxis</em> and Governance (Cambridge Handbook)</span></div>
+          <div class="card-pub-item"><span class="card-pub-year">2017</span><span style="color:var(--ink-muted)">Ridesharing vs. Taxis: Rethinking Regulations</span></div>
+          <div class="card-pub-item"><span class="card-pub-year">2016</span><span style="color:var(--ink-muted)">Rethinking Taxi Regulations: The Case for Fundamental Reform</span></div>
+          <div class="card-pub-item"><span class="card-pub-year">2014</span><span style="color:var(--ink-muted)">Bottling Up Innovation in Craft Brewing</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKS -->
+<section id="books">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">02 /</span>
+      <h2>Books</h2>
+    </div>
+    <div class="books-grid">
+      <div class="book-card">
+        <div class="book-year">2024</div>
+        <h3><a href="https://www.fraserinstitute.org/sites/default/files/road-to-freedom-estonias-rise-from-soviet-vassal-state-to-one-of-the-freest-nations-on-earth_0.pdf" target="_blank">The Road to Freedom: Estonia's Rise from Soviet Vassal State to One of the Freest Nations on Earth</a></h3>
+        <div class="book-authors">With Peter J. Boettke &amp; Konstantin Zhukov</div>
+        <div class="book-pub">Fraser Institute, Vancouver, BC</div>
+      </div>
+      <div class="book-card">
+        <div class="book-year">2023</div>
+        <h3><a href="https://www.fraserinstitute.org/sites/default/files/road-to-socialism-and-back-an-economic-history-of-poland-1939-2019.pdf" target="_blank">The Road to Socialism and Back: An Economic History of Poland</a></h3>
+        <div class="book-authors">With Peter J. Boettke &amp; Konstantin Zhukov</div>
+        <div class="book-pub">Fraser Institute, Vancouver, BC</div>
+      </div>
+      <div class="book-card">
+        <div class="book-year">2017</div>
+        <h3><a href="https://www.amazon.com/Applied-Mainline-Economics-Bridging-Political-ebook/dp/B06XWKV4XB" target="_blank">Applied Mainline Economics: Bridging the Gap Between Theory and Public Policy</a></h3>
+        <div class="book-authors">With Peter J. Boettke</div>
+        <div class="book-pub">Mercatus Center at George Mason University, Arlington, VA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SELECTED PUBLICATIONS -->
+<section id="publications">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">03 /</span>
+      <h2>Selected Publications</h2>
+    </div>
+    <div class="pub-filters">
+      <button class="filter-btn active" onclick="filterPubs('all', this)">All</button>
+      <button class="filter-btn" onclick="filterPubs('peer', this)">Peer-Reviewed</button>
+      <button class="filter-btn" onclick="filterPubs('policy', this)">Policy Research</button>
+      <button class="filter-btn" onclick="filterPubs('freedom', this)">Freedom Indices</button>
+      <button class="filter-btn" onclick="filterPubs('con', this)">CON Laws</button>
+      <button class="filter-btn" onclick="filterPubs('testimony', this)">Testimony</button>
+    </div>
+    <div class="pub-list" id="pub-list">
+
+      <!-- 2026 -->
+      <div class="pub-item" data-tags="policy">
+        <div class="pub-year-col">2026</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://www.philanthropyroundtable.org/resource/free-to-give-a-state-by-state-regulatory-index/" target="_blank">Free to Give: A State-by-State Regulatory Index</a></div>
+          <div class="pub-meta"><span class="pub-venue">Philanthropy Roundtable</span><span>with Jack Salmon</span><span class="pub-tag policy">Policy</span></div>
+        </div>
+      </div>
+
+      <!-- 2025 -->
+      <div class="pub-item" data-tags="freedom peer">
+        <div class="pub-year-col">2025</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://www.fraserinstitute.org/studies/human-freedom-index-2025" target="_blank">The Human Freedom Index 2025</a></div>
+          <div class="pub-meta"><span class="pub-venue">Fraser Institute &amp; Cato Institute</span><span>with Vásquez, Murphy &amp; Sutter Schneider</span><span class="pub-tag freedom">Freedom Index</span></div>
+        </div>
+      </div>
+      <div class="pub-item" data-tags="freedom peer">
+        <div class="pub-year-col">2025</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://www.fraserinstitute.org/sites/default/files/2025-09/economic-freedom-of-the-world-2025-annual-report_1.pdf" target="_blank">Economic Freedom of the World in 2023</a></div>
+          <div class="pub-meta"><span class="pub-venue">Economic Freedom of the World 2025 Annual Report, Fraser Institute</span><span>with Lawson &amp; Murphy</span><span class="pub-tag freedom">Freedom Index</span></div>
+        </div>
+      </div>
+      <div class="pub-item" data-tags="policy freedom">
+        <div class="pub-year-col">2025</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://www.fraserinstitute.org/studies/liberators-us-states-that-increased-their-economic-freedom-in-21st-century" target="_blank">The Liberators: US States that Increased their Economic Freedom in the 21st Century</a></div>
+          <div class="pub-meta"><span class="pub-venue">Fraser Institute</span><span class="pub-tag policy">Policy</span></div>
+        </div>
+      </div>
+      <div class="pub-item" data-tags="con policy">
+        <div class="pub-year-col">2025</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://pacificlegal.org/wp-content/uploads/2025/08/SR-1161-Mitchell-and-Cavanaugh-Research-in-Brief-Certificate-of-Need-Reform-v2.pdf" target="_blank">Certificate of Need Reform: Answering the Fears</a></div>
+          <div class="pub-meta"><span class="pub-venue">Pacific Legal Foundation</span><span>with Jaimie Cavanaugh</span><span class="pub-tag con">CON Laws</span></div>
+        </div>
+      </div>
+      <div class="pub-item" data-tags="freedom policy">
+        <div class="pub-year-col">2025</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://www.fraserinstitute.org/studies/economic-freedom-in-land-of-enchantment" target="_blank">Economic Freedom in the Land of Enchantment</a></div>
+          <div class="pub-meta"><span class="pub-venue">Fraser Institute &amp; Rio Grande Foundation</span><span>with Paul Gessing</span><span class="pub-tag policy">Policy</span></div>
+        </div>
+      </div>
+
+      <!-- 2024 -->
+      <div class="pub-item" data-tags="freedom peer">
+        <div class="pub-year-col">2024</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://www.fraserinstitute.org/studies/human-freedom-index-2024" target="_blank">The Human Freedom Index 2024</a></div>
+          <div class="pub-meta"><span class="pub-venue">Fraser Institute &amp; Cato Institute</span><span>with Vásquez, Murphy &amp; Sutter Schneider</span><span class="pub-tag freedom">Freedom Index</span></div>
+        </div>
+      </div>
+      <div class="pub-item" data-tags="freedom peer">
+        <div class="pub-year-col">2024</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://www.fraserinstitute.org/studies/economic-freedom-north-america-2024" target="_blank">Economic Freedom of North America 2024</a></div>
+          <div class="pub-meta"><span class="pub-venue">Fraser Institute</span><span>with Stansel, Torra &amp; Carrión-Tavárez</span><span class="pub-tag freedom">Freedom Index</span></div>
+        </div>
+      </div>
+      <div class="pub-item" data-tags="con peer">
+        <div class="pub-year-col">2024</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://onlinelibrary-wiley-com.wvu.idm.oclc.org/doi/abs/10.1002/soej.12698" target="_blank">Certificate of Need Laws in Health Care: A Comprehensive Review of the Literature</a></div>
+          <div class="pub-meta"><span class="pub-venue">Southern Economic Journal</span><span class="pub-tag peer">Peer-Reviewed</span><span class="pub-tag con">CON Laws</span></div>
+        </div>
+      </div>
+      <div class="pub-item" data-tags="con peer">
+        <div class="pub-year-col">2024</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://journals-sagepub-com.wvu.idm.oclc.org/doi/10.1177/00469580241251937" target="_blank">Certificate of Need Laws in Health Care: Past, Present, and Future</a></div>
+          <div class="pub-meta"><span class="pub-venue">Inquiry</span><span class="pub-tag peer">Peer-Reviewed</span><span class="pub-tag con">CON Laws</span></div>
+        </div>
+      </div>
+
+      <!-- 2023 -->
+      <div class="pub-item" data-tags="con policy">
+        <div class="pub-year-col">2023</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://ij.org/report/striving-for-better-care/" target="_blank">Striving for Better Care: A Review of Kentucky's Certificate of Need Laws</a></div>
+          <div class="pub-meta"><span class="pub-venue">Institute for Justice</span><span>with Jaimie Cavanaugh</span><span class="pub-tag con">CON Laws</span></div>
+        </div>
+      </div>
+
+      <!-- 2022 -->
+      <div class="pub-item" data-tags="con peer">
+        <div class="pub-year-col">2022</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://www.mdpi.com/1911-8074/15/1/10/htm" target="_blank">The Economics of a Bed Shortage: Certificate of Need Regulation and Hospital Bed Utilization During COVID-19</a></div>
+          <div class="pub-meta"><span class="pub-venue">Journal of Risk and Financial Management</span><span>with Thomas Stratmann</span><span class="pub-tag peer">Peer-Reviewed</span><span class="pub-tag con">CON Laws</span></div>
+        </div>
+      </div>
+      <div class="pub-item" data-tags="policy">
+        <div class="pub-year-col">2022</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://administrativestate.gmu.edu/wp-content/uploads/sites/29/2022/02/McLaughlin-Mitchell-Thierer-FINAL.pdf" target="_blank">A Fresh Start: How to Address Regulations Suspended During the Coronavirus Crisis</a></div>
+          <div class="pub-meta"><span class="pub-venue">C. Boyden Gray Center, GMU</span><span>with McLaughlin &amp; Thierer</span><span class="pub-tag policy">Policy</span></div>
+        </div>
+      </div>
+
+      <!-- 2020 -->
+      <div class="pub-item" data-tags="policy">
+        <div class="pub-year-col">2020</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://www.mercatus.org/publications/corporate-welfare/targeted-economic-development-subsidies-don%E2%80%99t-work-interstate-compact" target="_blank">Targeted Economic Development Subsidies Don't Work. An Interstate Compact Could End Them</a></div>
+          <div class="pub-meta"><span class="pub-venue">Mercatus Center</span><span>with Michael D. Farren</span><span class="pub-tag policy">Policy</span></div>
+        </div>
+      </div>
+      <div class="pub-item" data-tags="con policy">
+        <div class="pub-year-col">2020</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://www.mercatus.org/publications/healthcare/con-laws-2020-about-update" target="_blank">The State of Certificate-of-Need Laws in 2020</a></div>
+          <div class="pub-meta"><span class="pub-venue">Mercatus Center</span><span>with Philpot &amp; McBirney</span><span class="pub-tag con">CON Laws</span></div>
+        </div>
+      </div>
+
+      <!-- 2019 -->
+      <div class="pub-item" data-tags="peer">
+        <div class="pub-year-col">2019</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://link-springer-com.mutex.gmu.edu/article/10.1007%2Fs11127-018-0588-3" target="_blank">Uncontestable Favoritism</a></div>
+          <div class="pub-meta"><span class="pub-venue">Public Choice, 181(1)</span><span class="pub-tag peer">Peer-Reviewed</span></div>
+        </div>
+      </div>
+      <div class="pub-item" data-tags="peer">
+        <div class="pub-year-col">2019</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://link-springer-com.mutex.gmu.edu/epdf/10.1007/s11127-019-00646-y" target="_blank">Rent Seeking at 52: An Introduction to a Special Issue of <em>Public Choice</em></a></div>
+          <div class="pub-meta"><span class="pub-venue">Public Choice, 181(1)</span><span class="pub-tag peer">Peer-Reviewed</span></div>
+        </div>
+      </div>
+      <div class="pub-item" data-tags="policy">
+        <div class="pub-year-col">2019</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://www.mercatus.org/system/files/mitchell-targeted-development-mercatus-special-study-v1.pdf" target="_blank">The Economics of a Targeted Economic Development Subsidy</a></div>
+          <div class="pub-meta"><span class="pub-venue">Mercatus Center</span><span>with Farren, Gonzalez &amp; Horpedahl</span><span class="pub-tag policy">Policy</span></div>
+        </div>
+      </div>
+
+      <!-- 2018 -->
+      <div class="pub-item" data-tags="peer">
+        <div class="pub-year-col">2018</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="http://journal.srsa.org/ojs/index.php/RRS/article/view/1184/850" target="_blank">The Political Economy of Targeted Economic Development Incentives</a></div>
+          <div class="pub-meta"><span class="pub-venue">Review of Regional Studies, 48(1)</span><span>with Sutter &amp; Eastman</span><span class="pub-tag peer">Peer-Reviewed</span></div>
+        </div>
+      </div>
+
+      <!-- 2017 -->
+      <div class="pub-item" data-tags="con policy">
+        <div class="pub-year-col">2017</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://www.mercatus.org/conlaws" target="_blank">Certificate-of-Need Laws: How CON Laws Affect Spending, Access, and Quality Across the States</a></div>
+          <div class="pub-meta"><span class="pub-venue">Mercatus Center</span><span>with Stratmann, Koopman, Bailey et al.</span><span class="pub-tag con">CON Laws</span></div>
+        </div>
+      </div>
+
+      <!-- 2015 -->
+      <div class="pub-item" data-tags="peer">
+        <div class="pub-year-col">2015</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://www.mercatus.org/publication/tragedy-anticommons-local-option-taxation-and-cell-phone-tax-bills" target="_blank">A Tragedy of the Anticommons: Local Option Taxation and Cell Phone Tax Bills</a></div>
+          <div class="pub-meta"><span class="pub-venue">Public Choice, 165(3)</span><span>with Thomas Stratmann</span><span class="pub-tag peer">Peer-Reviewed</span></div>
+        </div>
+      </div>
+      <div class="pub-item" data-tags="peer">
+        <div class="pub-year-col">2015</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://digitalcommons.pepperdine.edu/jbel/vol8/iss2/12/" target="_blank">The Sharing Economy and Consumer Protection Regulation: The Case for Policy Change</a></div>
+          <div class="pub-meta"><span class="pub-venue">Journal of Business, Entrepreneurship &amp; the Law, 8(2)</span><span>with Koopman &amp; Thierer</span><span class="pub-tag peer">Peer-Reviewed</span></div>
+        </div>
+      </div>
+
+      <!-- 2012 -->
+      <div class="pub-item" data-tags="peer">
+        <div class="pub-year-col">2012</div>
+        <div class="pub-content">
+          <div class="pub-title">Institutions and State Spending: An Overview</div>
+          <div class="pub-meta"><span class="pub-venue">Independent Review, 17(1)</span><span>with Nicholas Tuszynski</span><span class="pub-tag peer">Peer-Reviewed</span></div>
+        </div>
+      </div>
+      <div class="pub-item" data-tags="policy">
+        <div class="pub-year-col">2012</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://www.mercatus.org/publication/pathology-privilege-economic-consequences-government-favoritism" target="_blank">The Pathology of Privilege: The Economic Consequences of Government Favoritism</a></div>
+          <div class="pub-meta"><span class="pub-venue">Mercatus Center Special Study</span><span class="pub-tag policy">Policy</span></div>
+        </div>
+      </div>
+
+      <!-- TESTIMONIES (few selected) -->
+      <div class="pub-item" data-tags="testimony">
+        <div class="pub-year-col">2025</div>
+        <div class="pub-content">
+          <div class="pub-title">Maryland's Certificate of Need Requirements</div>
+          <div class="pub-meta"><span class="pub-venue">Health and Government Operations Committee</span><span class="pub-tag testimony">Testimony</span><span class="pub-tag con">CON Laws</span></div>
+        </div>
+      </div>
+      <div class="pub-item" data-tags="testimony">
+        <div class="pub-year-col">2022</div>
+        <div class="pub-content">
+          <div class="pub-title">North Carolina's Certificate of Need Program: Three Numbers Everyone Should Know</div>
+          <div class="pub-meta"><span class="pub-venue">North Carolina Legislature</span><span class="pub-tag testimony">Testimony</span><span class="pub-tag con">CON Laws</span></div>
+        </div>
+      </div>
+      <div class="pub-item" data-tags="testimony">
+        <div class="pub-year-col">2012</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://www.sbc.senate.gov/public/index.cfm/2012/4/perspectives-from-the-entrepreneurial-ecosystem-creating-jobs-and-growing-businesses-through-entrepreneurship" target="_blank">Perspectives from the Entrepreneurial Ecosystem</a></div>
+          <div class="pub-meta"><span class="pub-venue">U.S. Senate Committee on Small Business and Entrepreneurship</span><span class="pub-tag testimony">Testimony</span></div>
+        </div>
+      </div>
+      <div class="pub-item" data-tags="testimony">
+        <div class="pub-year-col">2011</div>
+        <div class="pub-content">
+          <div class="pub-title"><a href="https://www.mercatus.org/system/files/A-Balanced-Budget-Amendment.pdf" target="_blank">A Balanced Budget Amendment to the United States Constitution</a></div>
+          <div class="pub-meta"><span class="pub-venue">U.S. House Judiciary Committee</span><span class="pub-tag testimony">Testimony</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FULL PUBLICATIONS -->
+<section id="all-publications">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">03b /</span>
+      <h2>All Publications</h2>
+    </div>
+
+    <!-- PEER-REVIEWED -->
+    <div class="full-pub-group">
+      <button class="full-pub-toggle" onclick="toggleGroup('peer-reviewed')">
+        <span>Peer-Reviewed Articles</span>
+        <span class="toggle-icon" id="icon-peer-reviewed">▸</span>
+      </button>
+      <div class="full-pub-body" id="group-peer-reviewed" style="display:none">
+        <div class="full-pub-item"><span class="full-pub-year">2024</span><div><a href="https://onlinelibrary-wiley-com.wvu.idm.oclc.org/doi/abs/10.1002/soej.12698" target="_blank">"Certificate of Need Laws in Health Care: A Comprehensive Review of the Literature."</a> <em>Southern Economic Journal</em>, May 2024.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2024</span><div><a href="https://journals-sagepub-com.wvu.idm.oclc.org/doi/10.1177/00469580241251937" target="_blank">"Certificate of Need Laws in Health Care: Past, Present, and Future."</a> <em>Inquiry</em>, May 2024.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2022</span><div><a href="https://www.mdpi.com/1911-8074/15/1/10/htm" target="_blank">"The Economics of a Bed Shortage: Certificate of Need Regulation and Hospital Bed Utilization During the COVID-19 Pandemic,"</a> with Thomas Stratmann. <em>Journal of Risk and Financial Management</em> 15 no. 10, January 2022.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2019</span><div><a href="https://link-springer-com.mutex.gmu.edu/epdf/10.1007/s11127-019-00646-y" target="_blank">"Rent Seeking at 52: An Introduction to a Special Issue of <em>Public Choice</em>."</a> <em>Public Choice</em>, 181 (1), October 2019.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2019</span><div><a href="https://link-springer-com.mutex.gmu.edu/article/10.1007%2Fs11127-018-0588-3" target="_blank">"Uncontestable Favoritism."</a> <em>Public Choice</em>, 181 (1), October 2019.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2018</span><div><a href="http://journal.srsa.org/ojs/index.php/RRS/article/view/1184/850" target="_blank">"The Political Economy of Targeted Economic Development Incentives,"</a> with Daniel Sutter and Scott Eastman. <em>Review of Regional Studies</em> 48 (1), 2018.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2015</span><div><a href="https://www.mercatus.org/publication/tragedy-anticommons-local-option-taxation-and-cell-phone-tax-bills" target="_blank">"A Tragedy of the Anticommons: Local Option Taxation and Cell Phone Tax Bills,"</a> with Thomas Stratmann. <em>Public Choice</em> 165 (3), December 2015.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2015</span><div><a href="https://digitalcommons.pepperdine.edu/cgi/viewcontent.cgi?article=1130&context=jbel" target="_blank">"The Sharing Economy and Consumer Protection Regulation: The Case for Policy Change,"</a> with Christopher Koopman and Adam Thierer. <em>Journal of Business, Entrepreneurship, and the Law</em> 8 No. 2, September 2015.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2013</span><div>"Luigi Zingales, <em>A Capitalism for the People</em>," book review. <em>Review of Austrian Economics</em> 26 No. 1, February 2013.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2012</span><div>"Institutions and State Spending: An Overview," with Nicholas Tuszynski. <em>Independent Review</em> 17 No. 1, Summer 2012.</div></div>
+      </div>
+    </div>
+
+    <!-- BOOKS & CHAPTERS -->
+    <div class="full-pub-group">
+      <button class="full-pub-toggle" onclick="toggleGroup('books-chapters')">
+        <span>Books &amp; Book Chapters</span>
+        <span class="toggle-icon" id="icon-books-chapters">▸</span>
+      </button>
+      <div class="full-pub-body" id="group-books-chapters" style="display:none">
+        <div class="full-pub-item"><span class="full-pub-year">2024</span><div><a href="https://www.fraserinstitute.org/sites/default/files/road-to-freedom-estonias-rise-from-soviet-vassal-state-to-one-of-the-freest-nations-on-earth_0.pdf" target="_blank"><em>The Road to Freedom: Estonia's Rise from Soviet Vassal State to One of the Freest Nations on Earth</em>,</a> with Peter J. Boettke and Konstantin Zhukov. Fraser Institute, 2024.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2023</span><div><a href="https://www.fraserinstitute.org/sites/default/files/road-to-socialism-and-back-an-economic-history-of-poland-1939-2019.pdf" target="_blank"><em>The Road to Socialism and Back: An Economic History of Poland</em>,</a> with Peter J. Boettke and Konstantin Zhukov. Fraser Institute, 2023.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2023</span><div>"Anti-Aid Provisions in State Constitution," with Jonathan Riches, Veronica Thorson, and Anne Philpot in <em>New Perspectives on State Government Fiscal Challenges</em>, edited by John Merrifield and Barry Paulson, 2023.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2021</span><div>"Welcome Competition: Scale Back Certificate of Need Laws," in <em>Don't Wait for Washington: How States Can Reform Health Care Today</em>, edited by Brian Blase, December 2021.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2018</span><div>"Overcoming the Special Interests Who Have Ruined Our Tax Code," in <em>For Your Own Good: Paternalism, Taxes, and Fiscal Discrimination in the Twenty-First Century</em>, edited by Adam Hoffer and Todd Nesbit. Mercatus Center, 2018.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2018</span><div>"Taxis, <em>Taxis</em> and Governance in the Transportation-for-Hire Industry," with Christopher Koopman in <a href="https://www.amazon.com/Cambridge-Handbook-Law-Sharing-Economy/dp/1108416950/" target="_blank"><em>Cambridge Handbook of the Law of the Sharing Economy</em></a>, 2018.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2017</span><div><a href="https://www.amazon.com/Applied-Mainline-Economics-Bridging-Political-ebook/dp/B06XWKV4XB" target="_blank"><em>Applied Mainline Economics: Bridging the Gap Between Theory and Public Policy</em>,</a> with Peter J. Boettke. Mercatus Center, 2017.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2013</span><div>"Economic Freedom and Economic Privilege," chapter in <em>2013 Index of Economic Freedom</em>, Heritage Foundation, 2013.</div></div>
+      </div>
+    </div>
+
+    <!-- FREEDOM INDICES -->
+    <div class="full-pub-group">
+      <button class="full-pub-toggle" onclick="toggleGroup('freedom-indices')">
+        <span>Freedom Indices &amp; Annual Reports</span>
+        <span class="toggle-icon" id="icon-freedom-indices">▸</span>
+      </button>
+      <div class="full-pub-body" id="group-freedom-indices" style="display:none">
+        <div class="full-pub-item"><span class="full-pub-year">2026</span><div><a href="https://www.philanthropyroundtable.org/resource/free-to-give-a-state-by-state-regulatory-index/" target="_blank">"Free to Give: A State-by-State Regulatory Index,"</a> with Jack Salmon. <em>Philanthropy Roundtable</em>, June 2026.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://www.fraserinstitute.org/studies/human-freedom-index-2025" target="_blank">"The Human Freedom Index 2025,"</a> with Ian Vásquez, Ryan Murphy, and Guillermina Sutter Schneider. Fraser Institute &amp; Cato Institute, December 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://www.fraserinstitute.org/sites/default/files/2025-09/economic-freedom-of-the-world-2025-annual-report_1.pdf" target="_blank">"Economic Freedom of the World in 2023,"</a> with Robert Lawson and Ryan Murphy. <em>Economic Freedom of the World 2025 Annual Report</em>, Fraser Institute, September 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://www.fraserinstitute.org/studies/liberators-us-states-that-increased-their-economic-freedom-in-21st-century" target="_blank">"The Liberators: US States that Increased their Economic Freedom in the 21st Century."</a> Fraser Institute, October 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://www.fraserinstitute.org/studies/US-economic-freedom-in-a-trade-war" target="_blank">"US Economic Freedom in a Trade War: Economic Freedom of the World 2025 Pre-release,"</a> with Robert Lawson. Fraser Institute, August 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://fei.org.il/wp-content/uploads/2025/04/Economic-Freedom-and-Doing-Business-Paper-DIGITAL.pdf" target="_blank">"Economic Freedom in Abraham Accords and Selected Nations,"</a> with Robert Lawson. <em>The Friedberg Economics Institute</em>, April 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://www.fraserinstitute.org/studies/economic-freedom-in-land-of-enchantment" target="_blank">"Economic Freedom in the Land of Enchantment,"</a> with Paul Gessing. Fraser Institute &amp; Rio Grande Foundation, March 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2024</span><div><a href="https://www.fraserinstitute.org/studies/human-freedom-index-2024" target="_blank">"The Human Freedom Index 2024,"</a> with Ian Vásquez, Ryan Murphy, and Guillermina Sutter Schneider. Fraser Institute &amp; Cato Institute, December 2024.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2024</span><div><a href="https://www.fraserinstitute.org/studies/economic-freedom-north-america-2024" target="_blank">"Economic Freedom of North America 2024,"</a> with Dean Stansel, José Torra, and Ángel Carrión-Tavárez. Fraser Institute, December 2024.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2024</span><div>"Economic Freedom of the World in 2022," with Robert Lawson and Ryan Murphy. <a href="https://www.fraserinstitute.org/sites/default/files/2024-10/economic-freedom-of-the-world-2024.pdf" target="_blank"><em>Economic Freedom of the World 2024 Annual Report</em></a>, Fraser Institute, October 2024.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2024</span><div><a href="https://www.fraserinstitute.org/studies/economic-freedom-what-is-it-how-is-it-measured-and-how-does-it-affect-our-lives" target="_blank">"Economic Freedom: What is it? How is it Measured? And How Does It Affect Our Lives."</a> Fraser Institute, September 2024.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2024</span><div><a href="https://www.fraserinstitute.org/studies/economic-freedom-north-america-2025" target="_blank">"Economic Freedom of North America 2025,"</a> with Dean Stansel, José Torra, and Ángel Carrión-Tavárez. Fraser Institute, December 2024.</div></div>
+      </div>
+    </div>
+
+    <!-- CON LAWS & HEALTHCARE -->
+    <div class="full-pub-group">
+      <button class="full-pub-toggle" onclick="toggleGroup('con-health')">
+        <span>Certificate of Need Laws &amp; Healthcare Policy</span>
+        <span class="toggle-icon" id="icon-con-health">▸</span>
+      </button>
+      <div class="full-pub-body" id="group-con-health" style="display:none">
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://pacificlegal.org/wp-content/uploads/2025/08/SR-1161-Mitchell-and-Cavanaugh-Research-in-Brief-Certificate-of-Need-Reform-v2.pdf" target="_blank">"Certificate of Need Reform: Answering the Fears,"</a> with Jaimie Cavanaugh. Pacific Legal Foundation, August 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2024</span><div>"Mississippi's Certificate of Need Laws: Options for Reform." Mississippi Center for Public Policy, January 2024.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2023</span><div><a href="https://ij.org/report/striving-for-better-care/" target="_blank">"Striving for Better Care: A Review of Kentucky's Certificate of Need Laws,"</a> with Jaimie Cavanaugh. Institute for Justice, August 2023.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2023</span><div>"Economic Report on Georgia's Certificate of Need Program," with Christopher Denson. Georgia Public Policy Foundation, April 2023.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2022</span><div>"South Carolina's Certificate of Need Program: A Comprehensive Review." Palmetto Promise Institute, March 2022.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2021</span><div><a href="https://www.mercatus.org/publications/healthcare/west-virginia%E2%80%99s-certificate-need-program-lessons-research" target="_blank">"West Virginia's Certificate-of-Need Program: Lessons from the Research."</a> Mercatus Center, September 2021.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2021</span><div><a href="https://www.mercatus.org/publications/healthcare/policy-spotlight-certificate-need-laws-limit-access-healthcare%E2%80%94repealing" target="_blank">"Certificate-of-Need Laws Limit Access to Healthcare: Repealing Them Reduces Costs and Improves Quality."</a> Mercatus Center, August 2021.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2021</span><div><a href="https://www.mercatus.org/Certificate-of-Need-Laws-How-They-Affect-Healthcare-Access-Quality-and-Cost" target="_blank">"Certificate-of-Need Laws: How they Affect Access, Quality, and Cost."</a> Mercatus Center, May 2021.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2020</span><div><a href="https://www.mercatus.org/publications/healthcare/con-laws-2020-about-update" target="_blank">"The State of Certificate-of-Need Laws in 2020,"</a> with Anne Philpot and Jessica McBirney. Mercatus Center, November 2020.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2020</span><div><a href="https://www.mercatus.org/publications/healthcare/phasing-out-certificate-need-laws" target="_blank">"Phasing out Certificate-of-Need Laws: A Menu of Options,"</a> with Elise Amez-Droz and Anna Parsons. Mercatus Center, February 2020.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2020</span><div><a href="https://www.mercatus.org/publications/covid-19-policy-brief-series/raising-bar-icu-beds-and-certificates-need" target="_blank">"Raising the Bar: ICU Beds and Certificates of Need,"</a> with Thomas Stratmann and James Bailey. Mercatus Center, April 2020.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2019</span><div><a href="https://www.mercatus.org/system/files/mitchell_and_amez-droz_-_policy_brief_-_how_certificate-of-need_reform_can_increase_access_to_higher-quality_lower-cost_healthcare_in_vermont_-_v1.pdf" target="_blank">"How Certificate-of-Need Reform Can Increase Access to Higher-Quality, Lower-Cost Healthcare in Vermont,"</a> with Elise Amez-Droz. Mercatus Center, February 2019.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2019</span><div>"Alaska's CON Law: Lessons from Three Decades of Research." Mercatus Center, 2019.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2017</span><div><a href="https://www.mercatus.org/conlaws" target="_blank">"Certificate-of-Need Laws: How CON Laws Affect Spending, Access, and Quality Across the States,"</a> with Stratmann, Koopman, Bailey et al. Mercatus Center, August 2017.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2017</span><div><a href="https://www.mercatus.org/publications/certificate-of-need-laws-goals" target="_blank">"Certificate-of-Need Laws: Are they Achieving their Goals?"</a> Mercatus Center, April 2017.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2017</span><div>"The Biggest Health Care CON: The Effects of Certificate-of-Need Laws in Florida," with Logan Pike. James Madison Institute, April 2017.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2017</span><div>"Illinois's Certificate-of-Need Laws: Effects on Quality, Spending, and Access to Care," with Thomas Stratmann and Scott Eastman. Mercatus Center, June 2017.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2016</span><div><a href="https://www.mercatus.org/publication/do-certificate-need-laws-limit-spending" target="_blank">"Do Certificate-of-Need Laws Limit Spending?"</a> Mercatus Working Paper, September 2016.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2015</span><div>"Three Prescriptions for States to Improve Health Care," with Anna Mills and Dana Williams. Mercatus Center, January 2015.</div></div>
+      </div>
+    </div>
+
+    <!-- OCCUPATIONAL LICENSING & REGULATION -->
+    <div class="full-pub-group">
+      <button class="full-pub-toggle" onclick="toggleGroup('licensing')">
+        <span>Occupational Licensing &amp; Regulation</span>
+        <span class="toggle-icon" id="icon-licensing">▸</span>
+      </button>
+      <div class="full-pub-body" id="group-licensing" style="display:none">
+        <div class="full-pub-item"><span class="full-pub-year">2022</span><div><a href="https://www.mercatus.org/publications/occupational-regulation-and-licensure/economic-freedom-period-invisible-punishment" target="_blank">"Economic Freedom in the Period of Invisible Punishment: Occupational and Business Licensing Barriers that Restrict Access to Work for Those with Criminal Records,"</a> with Liya Palagashvili. Mercatus Center, January 2022.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2021</span><div><a href="https://www.mercatus.org/publications/occupational-regulation-and-licensure/policy-spotlight-burdensome-occupational" target="_blank">"Burdensome Occupational Licensing Harms Vulnerable Populations."</a> Mercatus Center, May 2021.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2019</span><div>"West Virginia Occupational Licensing," with Emma Blair. Mercatus Center, December 2019.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2017</span><div><a href="https://www.mercatus.org/publications/effects-occupational-licensure-competition-consumers-and-workforce" target="_blank">"The Effects of Occupational Licensure on Competition, Consumers, and the Workforce,"</a> with Patrick McLaughlin and Anne Philpot. Mercatus Center, November 2017.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2017</span><div>"Occupational Licensure and the Poor and Disadvantaged." Mercatus Center, September 2017.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2017</span><div>State-level occupational licensure studies (Arkansas, Illinois, Michigan, Missouri, Nebraska, Nevada, North Carolina, Wisconsin) with Patrick McLaughlin and Anne Philpot. Mercatus Center, 2017–2018.</div></div>
+      </div>
+    </div>
+
+    <!-- CORPORATE WELFARE & STATE FISCAL POLICY -->
+    <div class="full-pub-group">
+      <button class="full-pub-toggle" onclick="toggleGroup('fiscal')">
+        <span>Corporate Welfare, Favoritism &amp; State Fiscal Policy</span>
+        <span class="toggle-icon" id="icon-fiscal">▸</span>
+      </button>
+      <div class="full-pub-body" id="group-fiscal" style="display:none">
+        <div class="full-pub-item"><span class="full-pub-year">2020</span><div><a href="https://www.mercatus.org/publications/corporate-welfare/-interstate-compact-end-economic-development-subsidy-arms-race" target="_blank">"An Interstate Compact to End the Economic Development Subsidy Arms Race,"</a> with Michael D. Farren. Mercatus Center, July 2020.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2020</span><div>"Outlawing Favoritism: The Economics, History, and Law of Anti-Aid Provisions in State Constitutions," with Jonathan Riches, Veronica Thorson, and Anne Philpot. Mercatus Working Paper, March 2020.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2019</span><div><a href="https://www.mercatus.org/system/files/mitchell-targeted-development-mercatus-special-study-v1.pdf" target="_blank">"The Economics of a Targeted Economic Development Subsidy,"</a> with Michael D. Farren, Olivia Gonzalez, and Jeremy Horpedahl. Mercatus Center, November 2019.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2019</span><div>"A Culture of Favoritism: Corporate Privilege and Beliefs about Markets and Government," with Scott Eastman and Tamara Winter. Mercatus Center, March 2019.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2012</span><div><a href="https://www.mercatus.org/publication/pathology-privilege-economic-consequences-government-favoritism" target="_blank">"The Pathology of Privilege: The Economic Consequences of Government Favoritism."</a> Mercatus Center, July 2012.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2016</span><div>"State Budget Institutions," with Olivia Gonzalez. Mercatus Center, April 2016.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2015</span><div>"A House Divided Against Itself Cannot Spend (as Much): The Fiscal Effects of Separate Taxing and Spending Committees in State Legislatures," with Pavel Yakovlev. Mercatus Working Paper, May 2015.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2010</span><div>"TEL It Like It Is: Do State Tax and Expenditure Limits Actually Limit Spending?" Mercatus Working Paper, December 2010.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2010</span><div>"State Spending Restraint: An Analysis of the Path Not Taken." Mercatus Working Paper, August 2010.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2011</span><div>"Pick Your Poison: Do Politicians Regulate When They Can't Spend?" with Noel Johnson and Steven Yamarik. Mercatus Working Paper, June 2011.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2011</span><div>"Would More Infrastructure Spending Stimulate the Economy?" with Veronique de Rugy. Mercatus Working Paper, September 2011.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2012</span><div>"What Went Wrong With the Bush Tax Cuts," with Andrea Castillo. Mercatus Center, November 2012.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2018</span><div>"The Opportunity Cost of Corporate Welfare," with Tamara Winter. Mercatus Center, May 2018.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2024</span><div><a href="https://jamesmadison.org/wp-content/uploads/Backgrounder_ReedyCreek_Jun2024-v02.pdf" target="_blank">"Governing the Magic Kingdom: A Triumph of Self Governance or the Pathology of Privilege,"</a> with Tad DeHaven. James Madison Institute, June 2024.</div></div>
+      </div>
+    </div>
+
+    <!-- REGULATION, SHARING ECONOMY & TRANSPORTATION -->
+    <div class="full-pub-group">
+      <button class="full-pub-toggle" onclick="toggleGroup('sharing')">
+        <span>Regulation, Sharing Economy &amp; Transportation</span>
+        <span class="toggle-icon" id="icon-sharing">▸</span>
+      </button>
+      <div class="full-pub-body" id="group-sharing" style="display:none">
+        <div class="full-pub-item"><span class="full-pub-year">2022</span><div><a href="https://administrativestate.gmu.edu/wp-content/uploads/sites/29/2022/02/McLaughlin-Mitchell-Thierer-FINAL.pdf" target="_blank">"A Fresh Start: How to Address Regulations Suspended During the Coronavirus Crisis,"</a> with Patrick McLaughlin and Adam Thierer. C. Boyden Gray Center, GMU, February 2022.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2020</span><div>"COVID-19 Shows Why America Needs Regulatory Reform," with Adam Thierer and Patrick McLaughlin. Mercatus Center, June 2020.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2017</span><div>"Ridesharing vs. Taxis: Rethinking Regulations to Allow for Innovation," with Michael Farren and Christopher Koopman. Mercatus Center, May 2017.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2016</span><div>"Rethinking Taxi Regulations: The Case for Fundamental Reform," with Michael Farren and Christopher Koopman. Mercatus Center, July 2016.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2016</span><div>"The Regulation of Taxi and Limousine Industries in Pennsylvania," with Christopher Koopman and Michael Farren. Public Interest Comment, Mercatus Center, September 2016.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2015</span><div>"The Sharing Economy: Issues Facing Platforms, Participants, and Regulators," with Adam Thierer and Christopher Koopman. FTC Public Interest Comment, May 2015.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2014</span><div>"Bottling Up Innovation in Craft Brewing," with Christopher Koopman. Mercatus Center, June 2014.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2021</span><div>"Deregulation: A Codeword for Safeguarding the Economic Rights of the Vulnerable," in <em>The Libertarian-Progressive Papers</em>, December 2021.</div></div>
+      </div>
+    </div>
+
+    <!-- LEGISLATIVE TESTIMONY -->
+    <div class="full-pub-group">
+      <button class="full-pub-toggle" onclick="toggleGroup('testimony-full')">
+        <span>Legislative &amp; Congressional Testimony</span>
+        <span class="toggle-icon" id="icon-testimony-full">▸</span>
+      </button>
+      <div class="full-pub-body" id="group-testimony-full" style="display:none">
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div>"Maryland's Certificate of Need Requirements." Health and Government Operations Committee, February 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div>"West Virginia's Certificate of Need Requirements." WV Joint Standing Committee on Health, February 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2024</span><div>"Washington, D.C.'s Certificate of Need Requirements." DC Committee on Health, October 2024.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2024</span><div>"Kentucky's Certificate of Need Requirements." Interim Joint Committee on Licensing, Occupations, and Administrative Regulation, June 2024.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2024</span><div>"Oregon's Certificate of Need Requirements." Oregon Committee on Behavioral Health and Health Care, February 2024.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2024</span><div>"Nebraska's Certificate of Need Law." Nebraska Unicameral Legislature Banking, Commerce, and Insurance Committee, January 2024.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2024</span><div>"Washington State's Psychiatric Care Certificate of Need Requirement." Washington Senate Health and Long Term Care Committee, January 2024.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2022</span><div>"South Carolina's Certificate of Need Program: Three Numbers Everyone Should Know." SC Certificate of Need Ad Hoc Committee, April 2022.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2022</span><div>"North Carolina's Certificate of Need Program." NC Legislature, April 2022.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2022</span><div>"Alaska's Certificate of Need Program." Alaska Senate Finance Committee, March 2022.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2022</span><div>"Colorado's Licensure Rules Reduce Employment Prospects for Those with Criminal Records." Colorado House Finance Committee, February 2022.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2022</span><div>"Missouri's Certificate-of-Need Program." Missouri Senate Committee on Health and Pensions, February 2022.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2022</span><div>"West Virginia's Certificate-of-Need Program." WV House of Delegates Health Committee, February 2022.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2022</span><div>"Utah's Barriers to Work for Those with Criminal Records." Utah House Business and Labor Committee, January 2022.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2021</span><div>"South Carolina's Certificate-of-Need Program." Senate Medical Affairs Committee, May 2021.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2021</span><div>"Ohio Occupational Licensure: Options for Reform." Ohio House State and Local Government Committee, May 2021.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2021</span><div>"Alaska's Certificate-of-Need Program." Alaska Senate Labor and Commerce Committee, April 2021.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2021</span><div>"Maine's Certificate-of-Need Program." Maine Joint Committee on Health Coverage, Insurance, and Financial Services, April 2021.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2021</span><div>"Montana's Certificate-of-Need Program." Montana Senate Committee on Public Health, March 2021.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2021</span><div>"Washington's Certificate-of-Need Program." Washington House Health Care and Wellness Committee, March 2021.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2020</span><div>"Colorado Occupational Licensing and Credential Portability." Colorado House Committee on Business Affairs and Labor, March 2020.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2020</span><div>"Ohio Occupational Licensure and Universal Recognition." Ohio Senate General Government Committee, February 2020.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2020</span><div>"Arizona Occupational Licensing." Arizona Senate Military and Veterans Affairs Committee, January 2020.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2020</span><div>"Wisconsin Occupational Licensing." Wisconsin Senate Public Benefits Committee, January 2020.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2020</span><div>"Michigan's Certificate-of-Need Program." Michigan Senate Health Policy Committee, January 2020.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2019</span><div>"Tennessee's Certificate-of-Need Program." Tennessee CON Working Group, October 2019.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2019</span><div>"California Occupational Licensing." California Senate Aerospace and Defense Committee, August 2019.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2019</span><div>"Arizona Occupational Licensing." Arizona Senate Commerce Committee, March 2019.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2019</span><div>"CON Law Letter to Senate HELP Committee," with Anne Philpot. February 2019.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2019</span><div>"Colorado Occupational Licensing." Colorado House Business Affairs and Labor Committee, February 2019.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2019</span><div>"Florida's CON Law." Florida House Health Market Reform Committee, February 2019.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2018</span><div>"Ohio Occupational Licensing." Ohio House Federalism and Interstate Relations Committee, November 2018.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2018</span><div>"Texas Occupational Licensing." Texas Senate Business and Commerce Committee, August 2018.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2018</span><div>"Virginia's Certificate-of-Public-Need Law." Virginia House Health, Welfare, and Institutions Committee, April 2018.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2018</span><div>"Colorado Occupational Licensing." Colorado Senate Business, Labor, and Technology Committee, March 2018.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2018</span><div>"Alaska's Certificate-of-Need Law." Alaska Senate Labor and Commerce Committee, February 2018.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2017</span><div>"Mississippi's Certificate-of-Need Law." Mississippi House Public Health Committee, September 2017.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2017</span><div>"Wisconsin Occupational Licensing." Wisconsin Senate and Assembly Committees, August 2017.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2017</span><div>"Tax and Expenditure Limitations." Alaska Senate State Affairs Committee, March 2017.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2017</span><div>"Do Certificate-of-Need Laws Reduce Spending?" Florida Health Innovation Subcommittee, January 2017.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2012</span><div>"Perspectives from the Entrepreneurial Ecosystem." <a href="https://www.sbc.senate.gov/public/index.cfm/2012/4/perspectives-from-the-entrepreneurial-ecosystem-creating-jobs-and-growing-businesses-through-entrepreneurship" target="_blank">U.S. Senate Committee on Small Business and Entrepreneurship</a>, April 2012.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2012</span><div>"What Can Government Do To Create Jobs?" U.S. House Committee on Education and the Workforce, February 2012.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2011</span><div><a href="https://www.mercatus.org/system/files/A-Balanced-Budget-Amendment.pdf" target="_blank">"A Balanced Budget Amendment to the United States Constitution."</a> U.S. House Judiciary Committee, October 2011.</div></div>
+      </div>
+    </div>
+
+    <!-- AMICUS BRIEFS & EXPERT REPORTS -->
+    <div class="full-pub-group">
+      <button class="full-pub-toggle" onclick="toggleGroup('amicus')">
+        <span>Amicus Curiae Briefs &amp; Expert Reports</span>
+        <span class="toggle-icon" id="icon-amicus">▸</span>
+      </button>
+      <div class="full-pub-body" id="group-amicus" style="display:none">
+        <div class="full-pub-item"><span class="full-pub-year">2024</span><div>"Brief of Certificate of Need Scholars as Amici Curiae." <em>Supreme Court of North Carolina, Singleton v. NC Department of Health and Human Services</em>, October 2024.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2022</span><div>"Brief of Amici Curiae Scholars of Law &amp; Economics in Support of Petitioners." <em>U.S. Supreme Court, Tiwari v. Friedlander</em>, August 2022.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2022</span><div>"Certificate of Need in Health: An Expert Report." Prepared for the U.S. Eastern District of Kentucky, April 2022.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2021</span><div>"Need Review Regulation: An Expert Report." Prepared for the U.S. Eastern District Court of Louisiana, August 2021.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2019</span><div>"Amicus Curiae Brief of Scholars of Certificate-of-Need Laws." <em>State of North Carolina County of Wake, Singh v. Forsyth Imaging Center</em>, September 2019.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2017</span><div>"Amicus Curiae Brief of Scholars of Certificate-of-Need Laws." <em>Supreme Court of Georgia, Women's Surgical Center v. Reese</em>, August 2017.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2016</span><div>"Brief of Amici Curiae Supporting Appellants." <em>U.S. Court of Appeals, 4th Circuit, Colon Health Centers v. Virginia Hospital and Healthcare Association</em>, January 2016.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2015</span><div>"Brief of Amici Curiae Scholars of Public Choice Economics in Support of Respondent." <em>U.S. Supreme Court, North Carolina Board of Dental Examiners v. FTC</em>, June 2015.</div></div>
+      </div>
+    </div>
+
+    <!-- OPINION PIECES -->
+    <div class="full-pub-group">
+      <button class="full-pub-toggle" onclick="toggleGroup('opeds')">
+        <span>Opinion Pieces &amp; Commentary</span>
+        <span class="toggle-icon" id="icon-opeds">▸</span>
+      </button>
+      <div class="full-pub-body" id="group-opeds" style="display:none">
+        <div class="full-pub-item"><span class="full-pub-year">2026</span><div><a href="https://dcjournal.com/place-your-bets-on-humanity/" target="_blank">"Place Your Bets on Humanity,"</a> with Robert Lawson. <em>Inside Sources</em>, April 22, 2026.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2026</span><div><a href="https://www.kentucky.com/opinion/op-ed/article315153645.html" target="_blank">"Kentucky's Path to Prosperity,"</a> with Caleb O. Brown. <em>Lexington Herald Leader</em>, March 23, 2026.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2026</span><div><a href="https://www.fraserinstitute.org/commentary/carney-and-trump-more-similar-theyd-admit" target="_blank">"Carney and Trump: More Similar Than they'd Like to Admit,"</a> with Nadeem Esmail. <em>Fraser Institute</em>, March 6, 2026.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2026</span><div><a href="https://www.fraserinstitute.org/commentary/work-has-helped-women-control-their-own-destinies" target="_blank">"Work Has Helped Women Control Their Own Destinies."</a> <em>Fraser Institute</em>, March 5, 2026.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2026</span><div><a href="https://www.fraserinstitute.org/commentary/private-property-rights-remain-fundamental-just-and-prosperous-society" target="_blank">"Private Property Rights Remain Fundamental to a Just and Prosperous Society."</a> February 28, 2026.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2026</span><div><a href="https://thedispatch.com/article/trump-tariffs-supreme-court-congress-constitution/" target="_blank">"Trump, Tariffs, and the Dangers of an Unbound Presidency."</a> <em>The Dispatch</em>, February 22, 2026.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2026</span><div><a href="https://thedailyeconomy.org/article/how-does-your-state-rank-on-this-economic-freedom-index/" target="_blank">"How Does Your State Rank on this Economic Freedom Index,"</a> with Vance Ginn. <em>Daily Economy</em>, January 30, 2026.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2026</span><div><a href="https://thedailyeconomy.org/article/three-lessons-from-venezuelas-economic-collapse/" target="_blank">"Three Lessons from Venezuela's Economic Collapse."</a> <em>The Daily Economy</em>, January 23, 2026.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2026</span><div><a href="https://www.fraserinstitute.org/commentary/private-property-essential-prosperity-canada-and-beyond" target="_blank">"Private Property is Essential for Prosperity in Canada and Beyond."</a> <em>Fraser Institute</em>, January 12, 2026.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://www.fraserinstitute.org/commentary/freedom-recession-gripping-globe" target="_blank">"Freedom Recession Gripping the Globe."</a> <em>Fraser Institute</em>, December 22, 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://dcjournal.com/some-states-are-economic-liberators-some-are-repressors-how-are-they-faring/" target="_blank">"Some States are Economic 'Liberators'; Others are 'Repressors.'"</a> <em>Inside Sources</em>, December 17, 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://www.abqjournal.com/opinion/opinion-new-mexicos-economic-freedom-is-now-dead-last/2934863" target="_blank">"New Mexico's Economic Freedom is Now Dead Last,"</a> with Paul Gessing. <em>Albuquerque Journal</em>, December 6, 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://www.fraserinstitute.org/commentary/fuelled-federalism-americas-economically-freest-states-come-out-top" target="_blank">"Fueled by Federalism—America's Economically Freest States Come out on Top."</a> Tribune Publishing Network (30+ newspapers), December 12, 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://www.fraserinstitute.org/commentary/global-economic-freedom-declined-four-years-row" target="_blank">"Global Economic Freedom Declined Four Years in a Row."</a> <em>Fraser Institute</em>, October 22, 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://richmond.com/opinion/column/article_6eea9826-f951-5638-8617-bdf4295def53.html" target="_blank">"Make America Capitalist Again,"</a> with Peter J. Boettke. Tribune Publishing Network, September 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://www.fraserinstitute.org/commentary/tariffs-eroding-economic-freedom-cost-backsliding" target="_blank">"Tariffs Eroding Economic Freedom—The Cost of Backsliding,"</a> with Robert Lawson. <em>Barron's</em>, September 22, 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://www.fraserinstitute.org/commentary/canadian-universities-should-do-more-protect-freedom-speech" target="_blank">"Canadian Universities Should Do More to Protect Freedom of Speech,"</a> with Michael Zwaagstra. <em>The Hub</em>, September 22, 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://www.fraserinstitute.org/commentary/freedom-speech-under-threat-university-campuses-canada" target="_blank">"Freedom of Speech Under Threat on University Campuses in Canada,"</a> with Michael Zwaagstra. <em>Financial Post</em>, September 8, 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://dcjournal.com/a-tax-lesson-from-scandinavia/" target="_blank">"A Tax Lesson from Scandinavia,"</a> with Steven Globerman. <em>Inside Sources</em>, August 21, 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://www.fraserinstitute.org/commentary/mamdanis-socialist-grocery-store-would-fail-new-yorkers" target="_blank">"Mamdani's Socialist Grocery Store Would Fail New Yorkers,"</a> with Steven Globerman. <em>Inside Sources</em>, July 29, 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://www.fraserinstitute.org/commentary/americas-leaders-mistake-coerced-exchange-win-win-exchange" target="_blank">"America's Leaders Mistake Coerced Exchange for Win-Win Exchange."</a> <em>The Hill</em>, July 17, 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://www.fraserinstitute.org/commentary/new-mexicos-lack-economic-freedom-hurting-new-mexicans" target="_blank">"New Mexico's Lack of Economic Freedom is Hurting New Mexicans,"</a> with Paul Gessing. <em>National Review</em>, May 22, 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://www.fraserinstitute.org/commentary/economically-free-women-are-economically-prosperous-women" target="_blank">"Economically Free Women and Economically Prosperous Women."</a> <em>Fraser Institute</em>, April 25, 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://www.discoursemagazine.com/p/let-woman-choose-her-own-vocation" target="_blank">"'Let Woman Choose Her Own Vocation Just as Man Does His,'"</a> with Rosemarie Fike. <em>Discourse Magazine</em>, March 8, 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://thehill.com/opinion/finance/5130758-progressives-embrace-deregulation/" target="_blank">"Trump Wants to Deregulate. Progressives Should Help Him,"</a> with Adam Thierer. <em>The Hill</em>, February 7, 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2025</span><div><a href="https://www.fraserinstitute.org/commentary/human-freedom-retreat-worldwide" target="_blank">"Human Freedom in Retreat Worldwide."</a> <em>Fraser Institute</em>, January 9, 2025.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2024</span><div><a href="https://www.fraserinstitute.org/commentary/economic-freedom-fell-for-three-straight-years" target="_blank">"Economic Freedom Fell For Three Straight Years."</a> <em>Fraser Institute</em>, October 28, 2024.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2024</span><div><a href="https://dcjournal.com/how-did-latin-americas-wealthiest-country-fall-so-far/" target="_blank">"How Did Latin America's Wealthiest Country Fall So Far?"</a> <em>Inside Sources</em>, August 6, 2024.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2024</span><div><a href="https://www.fraserinstitute.org/article/industrial-policy-in-2024-another-term-for-socialism" target="_blank">"Industrial Policy in 2024: Another Term for Socialism?"</a> with Steven Globerman. <em>Inside Sources</em>, June 12, 2024.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2024</span><div><a href="https://www.fraserinstitute.org/article/estonias-success-demonstrates-power-of-economic-freedom" target="_blank">"Estonia's Success Demonstrates Power of Economic Freedom."</a> <em>Inside Sources</em>, April 12, 2024.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2024</span><div><a href="https://www.discoursemagazine.com/p/what-can-we-learn-from-the-five-decade" target="_blank">"What Can We Learn from the Five Decade Socialist Experiment in Estonia?"</a> with Peter J. Boettke. <em>Discourse Magazine</em>, March 11, 2024.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2023</span><div><a href="https://ottawacitizen.com/opinion/columnists/hill-and-mitchell-stellantis-volkswagon-the-corporate-welfare-bums-are-back-in-business" target="_blank">"Stellantis, Volkswagen: The Corporate Welfare Bums are Back in Business,"</a> with Tegan Hill. <em>Ottawa Citizen</em>, May 30, 2023.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2023</span><div><a href="https://thehub.ca/2023-05-29/opinion-young-canadians-should-learn-about-the-polish-experiment-with-socialism/" target="_blank">"Young Canadians Should Learn About the Polish Experiment with Socialism,"</a> with Peter J. Boettke. <em>The Hub</em>, May 29, 2023.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2023</span><div><a href="https://www.sun-sentinel.com/opinion/commentary/fl-op-com-economic-freedom-rating-florida-20230121-ohf2rfi44zds7h4lt64f7fb5gm-story.html" target="_blank">"Economic Freedom Is Something to Brag About in Florida and Beyond."</a> <em>Sun Sentinel</em>, January 21, 2023.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2022</span><div><a href="https://www.fraserinstitute.org/commentary/irrational-basis" target="_blank">"Irrational Basis,"</a> with Anastasia Boden. <em>Discourse Magazine</em>, August 5, 2022.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2022</span><div><a href="https://thehill.com/opinion/healthcare/3549438-the-evidence-is-clear-states-exacerbated-pandemics-effect/" target="_blank">"The Evidence is Clear: States Exacerbated Pandemic's Effects,"</a> with Thomas Stratmann. <em>The Hill</em>, July 7, 2022.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2021</span><div><a href="https://www.discoursemagazine.com/economics/2021/12/13/the-five-fingers-of-the-invisible-hand/" target="_blank">"The Five Fingers of the Invisible Hand."</a> <em>Discourse</em>, December 13, 2021.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2021</span><div><a href="https://www.realclearpolicy.com/articles/2021/10/19/85_years_of_economic_warfare_between_states_is_enough_799465.html" target="_blank">"85 Years of Economic Warfare Between States is Enough,"</a> with Michael Farren. <em>Real Clear Policy</em>, October 19, 2021.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2021</span><div><a href="https://www.usnews.com/news/best-states/articles/2021-07-09/on-the-heels-of-the-pandemic-states-should-get-rid-of-certificate-of-need-laws" target="_blank">"It's Time for States to Ditch Certificate of Need Laws."</a> <em>US News and World Report</em>, July 9, 2021.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2021</span><div><a href="https://www.dallasnews.com/opinion/commentary/2021/05/02/the-overreach-of-biden-and-the-failures-of-trump-are-making-government-fat/" target="_blank">"The Overreach of Biden and the Failures of Trump are Making Government Fat."</a> <em>Dallas Morning News</em>, May 2, 2021.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2021</span><div><a href="https://www.discoursemagazine.com/economics/2021/04/06/industrial-policy-is-a-very-old-new-idea/" target="_blank">"Industrial Policy is a Very Old, New Idea,"</a> with Adam Thierer. <em>Discourse</em>, April 6, 2021.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2020</span><div><a href="https://www.chicagotribune.com/opinion/commentary/ct-opinion-foxconn-government-subsidies-wisconsin-20201127-rjnz7mslwrbffk7tstneoh7psm-story.html" target="_blank">"Fake Jobs, Fake News: Fake Foxconn Comes Further into Focus,"</a> with Michael Farren. <em>Chicago Tribune</em>, November 27, 2020.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2020</span><div><a href="https://www.chicagotribune.com/opinion/commentary/ct-opinion-hospital-regulations-certificate-of-need-coronavirus-20200506-ku4mrntsxre73m4vq5jczvt7yq-story.html" target="_blank">"Let's Fix the Laws Around Hospital Capacity Before the Next Health Crisis,"</a> with Thomas Stratmann. <em>Chicago Tribune</em>, May 6, 2020.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2019</span><div><a href="https://www.wsj.com/articles/regulators-wonder-if-cancer-patients-need-new-treatments-11572475291" target="_blank">"Regulators Wonder if Cancer Patients 'Need' New Treatments,"</a> with Anna Parsons. <em>Wall Street Journal</em>, October 30, 2019.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2019</span><div><a href="https://www.dallasnews.com/opinion/commentary/2019/09/24/elizabeth-warren-is-wrong-the-cure-for-bad-government-isn-t-more-government/" target="_blank">"Elizabeth Warren is Wrong. The Cure for Bad Government isn't More Government,"</a> with Tad DeHaven. <em>Dallas Morning News</em>, September 24, 2019.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2019</span><div><a href="https://reason.com/2019/07/05/socialists-are-scary-but-capitalists-are-their-own-worst-enemies/" target="_blank">"Socialists are Scary, but Capitalists Are Their Own Worst Enemies."</a> <em>Reason</em>, July 5, 2019.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2019</span><div><a href="https://www.chicagotribune.com/sns-tns-bc-politics-farmers-commentary-20190516-story.html" target="_blank">"The Grapes of Privilege,"</a> with Tad DeHaven. <em>Chicago Tribune</em>, May 16, 2019.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2018</span><div><a href="https://www.usnews.com/opinion/economic-intelligence/articles/2017-11-20/congress-should-nix-the-mortgage-interest-tax-deduction" target="_blank">"Get Rid of Big Housing's Big Break,"</a> with Tad DeHaven. <em>U.S. News and World Report</em>, November 20, 2017.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2018</span><div><a href="http://fortune.com/2018/02/14/blue-apron-snap-trump-food-stamps-harvest-box/" target="_blank">"Mick Mulvaney Wants to Decide What the Poor Eat for Lunch,"</a> with Robert Graboyes. <em>Fortune</em>, February 14, 2018.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2017</span><div><a href="https://www.washingtonpost.com/blogs/all-opinions-are-local/wp/2017/10/17/virginia-policy-puts-special-interests-above-patients/" target="_blank">"Virginia Policy Puts Special Interests Above Patients,"</a> with Steven Monaghan. <em>Washington Post</em>, October 17, 2017.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2017</span><div><a href="http://www.chicagotribune.com/news/opinion/commentary/ct-foxconn-wisconsin-tax-subsidies-20170809-story.html" target="_blank">"Foxconn Deal Makes the American Economy Less Great,"</a> with Tammy Winter. <em>Chicago Tribune</em>, August 9, 2017.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2017</span><div><a href="https://www.wsj.com/articles/rule-reversal-how-the-feds-can-challenge-state-regulation-1499381832" target="_blank">"Rule Reversal: How the Feds Can Challenge State Regulation,"</a> with Ryan Nunn. <em>Wall Street Journal</em>, July 7, 2017.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2017</span><div><a href="https://www.mercatus.org/publications/freedom-might-well-flourish-even-if-conservatives-dont" target="_blank">"Freedom Might Well Flourish Even if Conservatives Don't."</a> <em>Library of Law and Liberty</em>, May 18, 2017.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2016</span><div>"Trump's Carrier Deal Won't Make America Great Again." <em>Real Clear Markets</em>, December 7, 2016.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2015</span><div><a href="http://www.latimes.com/opinion/op-ed/la-oe-1119-mitchell-farren-uber-taxis-deregulate-20151118-story.html" target="_blank">"A Common-sense Solution to the Uber vs. Taxi Wars,"</a> with Michael Farren. <em>Los Angeles Times</em>, November 19, 2015.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2014</span><div><a href="http://www.latimes.com/opinion/op-ed/la-oe-mitchell-jitneys-uber-ride-share-20140713-story.html" target="_blank">"If you Like Uber, You Would've Loved the Jitney,"</a> with Michael Farren. <em>Los Angeles Times</em>, July 12, 2014.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2014</span><div>"'Pro-Business' is Bad Business for the Middle Class." <em>Washington Post</em>, December 17, 2014.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2013</span><div><a href="https://www.nytimes.com/roomfordebate/2013/02/19/how-to-prevent-more-bond-rating-fiascoes/competition-among-raters-will-lead-to-innovation-and-honesty" target="_blank">"Competition Will Lead to Innovation and Honesty."</a> <em>New York Times</em>, February 19, 2013.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2012</span><div><a href="https://www.usnews.com/opinion/blogs/economic-intelligence/2012/08/07/down-with-special-interests-but-not-mine" target="_blank">"Obama and the GOP Both Hypocrites on Special Interests."</a> <em>U.S. News and World Report</em>, August 7, 2012.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2011</span><div><a href="https://www.nytimes.com/roomfordebate/2011/05/16/whos-best-at-cutting-state-spending-14/what-jerry-brown-and-rick-scott-do-right" target="_blank">"What Jerry Brown and Rick Scott Do Right."</a> <em>New York Times Room for Debate</em>, May 16, 2011.</div></div>
+        <div class="full-pub-item"><span class="full-pub-year">2010</span><div><a href="https://www.wsj.com/articles/SB10001424052748704457604576011280265197002" target="_blank">"How to Control State Spending."</a> <em>Wall Street Journal</em>, December 20, 2010.</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">04 /</span>
+      <h2>Experience &amp; Education</h2>
+    </div>
+    <div class="exp-list">
+      <div class="exp-item">
+        <div class="exp-years">Sep 2022 – present</div>
+        <div>
+          <div class="exp-role">Senior Fellow, Centre for Human Freedom</div>
+          <div class="exp-org">Fraser Institute, Vancouver, BC</div>
+          <div class="exp-desc">Direct the Centre for Human Freedom, set priorities, commission annual reports, manage the economic freedom network, and co-author the Human Freedom Index, Economic Freedom of the World, and Economic Freedom of North America.</div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-years">2022 – present</div>
+        <div>
+          <div class="exp-role">Senior Affiliated Scholar</div>
+          <div class="exp-org">Mercatus Center at George Mason University</div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-years">2011 – 2022</div>
+        <div>
+          <div class="exp-role">Senior Research Fellow</div>
+          <div class="exp-org">Mercatus Center at George Mason University, Arlington, VA</div>
+          <div class="exp-desc">Led research on economic freedom, certificate of need laws, occupational licensing, corporate welfare, and government favoritism. Director of the Equal Liberty Initiative (2013–2022).</div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-years">2019 – present</div>
+        <div>
+          <div class="exp-role">Adjunct Professor of Economics</div>
+          <div class="exp-org">University of New Mexico, Taos, NM</div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-years">Jan 2023 – Mar 2025</div>
+        <div>
+          <div class="exp-role">Senior Research Fellow &amp; CON Research Coordinator</div>
+          <div class="exp-org">Knee Regulatory Research Center at West Virginia University</div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-years">2008 – 2010</div>
+        <div>
+          <div class="exp-role">Program Officer for Policy</div>
+          <div class="exp-org">Charles G. Koch Charitable Foundation, Washington, D.C.</div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-years">2009</div>
+        <div>
+          <div class="exp-role">Ph.D. in Economics</div>
+          <div class="exp-org">George Mason University, Fairfax, VA</div>
+          <div class="exp-desc">Fields in public choice and law &amp; economics. Dissertation: "Justices, Presidents and Nominations: A Strategic Account of Supreme Court Nominations."</div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-years">2002</div>
+        <div>
+          <div class="exp-role">B.A. Political Science &amp; B.S. Economics <em>(magna cum laude)</em></div>
+          <div class="exp-org">Arizona State University, Tempe, AZ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SELECTED WRITING -->
+<section id="writing">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">05 /</span>
+      <h2>Selected Opinion Writing</h2>
+    </div>
+    <div class="oped-grid">
+      <a class="oped-card" href="https://thedispatch.com/article/trump-tariffs-supreme-court-congress-constitution/" target="_blank">
+        <div class="oped-outlet">The Dispatch</div>
+        <div class="oped-title">Trump, Tariffs, and the Dangers of an Unbound Presidency</div>
+        <div class="oped-date">February 2026</div>
+      </a>
+      <a class="oped-card" href="https://www.fraserinstitute.org/commentary/freedom-recession-gripping-globe" target="_blank">
+        <div class="oped-outlet">Fraser Institute</div>
+        <div class="oped-title">Freedom Recession Gripping the Globe</div>
+        <div class="oped-date">December 2025</div>
+      </a>
+      <a class="oped-card" href="https://www.abqjournal.com/opinion/opinion-new-mexicos-economic-freedom-is-now-dead-last/2934863" target="_blank">
+        <div class="oped-outlet">Albuquerque Journal</div>
+        <div class="oped-title">New Mexico's Economic Freedom is Now Dead Last</div>
+        <div class="oped-date">December 2025</div>
+      </a>
+      <a class="oped-card" href="https://richmond.com/opinion/column/article_6eea9826-f951-5638-8617-bdf4295def53.html" target="_blank">
+        <div class="oped-outlet">Tribune Network (30+ papers)</div>
+        <div class="oped-title">Make America Capitalist Again</div>
+        <div class="oped-date">September 2025 · with Peter J. Boettke</div>
+      </a>
+      <a class="oped-card" href="https://thehill.com/opinion/finance/5130758-progressives-embrace-deregulation/" target="_blank">
+        <div class="oped-outlet">The Hill</div>
+        <div class="oped-title">Trump Wants to Deregulate. Progressives Should Help Him</div>
+        <div class="oped-date">February 2025 · with Adam Thierer</div>
+      </a>
+      <a class="oped-card" href="https://www.wsj.com/articles/SB10001424052748704457604576011280265197002" target="_blank">
+        <div class="oped-outlet">Wall Street Journal</div>
+        <div class="oped-title">How to Control State Spending</div>
+        <div class="oped-date">December 2010</div>
+      </a>
+      <a class="oped-card" href="https://www.wsj.com/articles/rule-reversal-how-the-feds-can-challenge-state-regulation-1499381832" target="_blank">
+        <div class="oped-outlet">Wall Street Journal</div>
+        <div class="oped-title">Rule Reversal: How the Feds Can Challenge State Regulation</div>
+        <div class="oped-date">July 2017 · with Ryan Nunn</div>
+      </a>
+      <a class="oped-card" href="https://www.wsj.com/articles/regulators-wonder-if-cancer-patients-need-new-treatments-11572475291" target="_blank">
+        <div class="oped-outlet">Wall Street Journal</div>
+        <div class="oped-title">Regulators Wonder if Cancer Patients 'Need' New Treatments</div>
+        <div class="oped-date">October 2019</div>
+      </a>
+      <a class="oped-card" href="https://reason.com/2019/07/05/socialists-are-scary-but-capitalists-are-their-own-worst-enemies/" target="_blank">
+        <div class="oped-outlet">Reason</div>
+        <div class="oped-title">Socialists are Scary, but Capitalists Are Their Own Worst Enemies</div>
+        <div class="oped-date">July 2019</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-label">06 /</span>
+      <h2>Contact</h2>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-bio">
+          I focus on economic and human freedom, public choice theory, and applied policy analysis. Please reach out if you have any questions about my research, media appearances, legislative testimony, or speaking engagements.
+        </p>
+        <div class="contact-details">
+          <div class="contact-row">
+            <span class="contact-row-label">Email</span>
+            <a href="mailto:Matthew.Mitchell@FraserInstitute.org">Matthew.Mitchell@FraserInstitute.org</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-row-label">Alt. Email</span>
+            <a href="mailto:Matt@MitchellCatallaxy.org">Matt@MitchellCatallaxy.org</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-row-label">Phone</span>
+            <span style="color: var(--ink-soft)">202.631.3744</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-row-label">Location</span>
+            <span style="color: var(--ink-soft)">Angel Fire, New Mexico</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-row-label">Profiles</span>
+            <span style="display:flex; flex-wrap:wrap; gap:0.5rem 1.25rem;">
+              <a href="https://scholar.google.com/citations?user=HFsomGgAAAAJ&hl=en" target="_blank">Google Scholar</a>
+              <a href="https://www.fraserinstitute.org/profile/matthew-d-mitchell" target="_blank">Fraser Institute</a>
+              <a href="https://www.mercatus.org/scholars/matthew-d-mitchell" target="_blank">Mercatus Center</a>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="affiliation-block">
+        <h3>Current Affiliations</h3>
+        <div class="affil-item">
+          <strong>Fraser Institute</strong>
+          <div class="affil-role">Senior Fellow, Centre for Human Freedom (2022–present)</div>
+        </div>
+        <div class="affil-item">
+          <strong>Mercatus Center at George Mason University</strong>
+          <div class="affil-role">Senior Affiliated Scholar (2022–present)</div>
+        </div>
+        <div class="affil-item">
+          <strong>University of New Mexico, Taos</strong>
+          <div class="affil-role">Adjunct Professor of Economics (2019–present)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Matthew D. Mitchell, Ph.D. &nbsp;·&nbsp; <a href="mailto:Matthew.Mitchell@FraserInstitute.org">Matthew.Mitchell@FraserInstitute.org</a> &nbsp;·&nbsp; Fraser Institute &amp; Mercatus Center</p>
+</footer>
+
+<script>
+  // Research card expand/collapse
+  function toggleResearch(id) {
+    const pubs = document.getElementById('pubs-' + id);
+    const card = document.getElementById('card-' + id);
+    const isOpen = pubs.style.display !== 'none';
+    pubs.style.display = isOpen ? 'none' : 'block';
+    card.setAttribute('aria-expanded', !isOpen);
+  }
+
+  // Collapsible full publication groups
+  function toggleGroup(id) {
+    const body = document.getElementById('group-' + id);
+    const icon = document.getElementById('icon-' + id);
+    const isOpen = body.style.display !== 'none';
+    body.style.display = isOpen ? 'none' : 'block';
+    icon.classList.toggle('open', !isOpen);
+    icon.textContent = isOpen ? '▸' : '▾';
+  }
+
+  // Publication filtering
+  function filterPubs(tag, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const items = document.querySelectorAll('.pub-item');
+    items.forEach(item => {
+      const tags = (item.getAttribute('data-tags') || '').split(' ');
+      if (tag === 'all' || tags.includes(tag)) {
+        item.classList.remove('pub-hidden');
+      } else {
+        item.classList.add('pub-hidden');
+      }
+    });
+  }
+
+  // Animated stat counters
+  function animateCounter(el, target, duration = 1200) {
+    let start = null;
+    const isText = isNaN(parseInt(target));
+    if (isText) return;
+    const num = parseInt(target);
+    const suffix = target.includes('+') ? '+' : '';
+
+    function step(ts) {
+      if (!start) start = ts;
+      const progress = Math.min((ts - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(ease * num) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const statNums = entry.target.querySelectorAll('.stat-num');
+        statNums.forEach(el => {
+          const val = el.textContent.trim();
+          animateCounter(el, val);
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const statsPanel = document.querySelector('.hero-stats');
+  if (statsPanel) observer.observe(statsPanel);
+</script>
+
+</body>
+</html>
